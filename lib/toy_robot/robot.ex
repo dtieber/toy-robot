@@ -5,15 +5,15 @@ defmodule ToyRobot.Robot do
   ## Examples
       iex> alias ToyRobot.Robot
       ToyRobot.Robot
-      iex> robot = %{position: 0}
-      %{position: 0}
+      iex> robot = %{east: 0}
+      %{east: 0}
       iex> robot |> Robot.move_east
-      %{position: 1}
+      %{east: 1}
       iex> robot |> Robot.move_east |> Robot.move_east |> Robot.move_east
-      %{position: 3}
+      %{east: 3}
   """
   def move_east(robot) do
-    %{position: robot.position + 1}
+    %{east: robot.east + 1}
   end
 
   @doc """
@@ -22,14 +22,14 @@ defmodule ToyRobot.Robot do
   ## Examples
       iex> alias ToyRobot.Robot
       ToyRobot.Robot
-      iex> robot = %{position: 0}
-      %{position: 0}
+      iex> robot = %{east: 0}
+      %{east: 0}
       iex> robot |> Robot.move_west
-      %{position: -1}
+      %{east: -1}
       iex> robot |> Robot.move_west |> Robot.move_west |> Robot.move_west
-      %{position: -3}
+      %{east: -3}
   """
   def move_west(robot) do
-    %{position: robot.position - 1}
+    %{east: robot.east - 1}
   end
 end
