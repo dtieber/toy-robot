@@ -13,10 +13,14 @@ defmodule ToyRobot.Robot do
       iex> robot |> Robot.move
       %Robot{north: 1}
   """
-  def move(%Robot{facing: :north} = robot), do: robot |> move_north
-  def move(%Robot{facing: :east} = robot), do: robot |> move_east
-  def move(%Robot{facing: :south} = robot), do: robot |> move_south
-  def move(%Robot{facing: :west} = robot), do: robot |> move_west
+  def move(%Robot{facing: facing} = robot) do
+    case facing do
+      :north -> robot |> move_north
+      :east -> robot |> move_east
+      :south -> robot |> move_south
+      :west -> robot |> move_west
+    end
+  end
 
   @doc """
   Moves the robot east one space.
