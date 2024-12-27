@@ -36,6 +36,19 @@ defmodule ToyRobot.RobotTest do
     end
   end
 
+  describe "when the robot is facing north, and it has moved east once" do
+    setup do
+      {:ok, %{robot: %Robot{east: 1, facing: :north}}}
+    end
+
+    test "moves north one space", %{robot: robot} do
+      robot = robot |> Robot.move
+      assert robot.north == 1
+      assert robot.east == 1
+      assert robot. facing == :north
+    end
+  end
+
   describe "when the robot is facing east" do
     setup do
       {:ok, %{robot: %Robot{east: 0, facing: :east}}}

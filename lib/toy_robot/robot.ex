@@ -65,7 +65,7 @@ defmodule ToyRobot.Robot do
   end
 
   defp move_north(robot) do
-    %Robot{north: robot.north + 1}
+    %Robot{robot | north: robot.north + 1}
   end
 
   defp move_east(robot) do
