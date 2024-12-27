@@ -49,4 +49,21 @@ defmodule ToyRobot.Robot do
   def move_north(robot) do
     %{north: robot.north + 1}
   end
+
+  @doc """
+  Moves the robot south one space.
+
+  ## Examples
+      iex> alias ToyRobot.Robot
+      ToyRobot.Robot
+      iex> robot = %{north: 0}
+      %{north: 0}
+      iex> robot |> Robot.move_south
+      %{north: -1}
+      iex> robot |> Robot.move_south |> Robot.move_south |> Robot.move_south
+      %{north: -3}
+  """
+  def move_south(robot) do
+    %{north: robot.north - 1}
+  end
 end
