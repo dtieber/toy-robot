@@ -11,5 +11,6 @@ defmodule ToyRobot.CommandRunner do
       {:error,  :invalid_placement} -> run(rest)
     end
   end
+  def run([_command | rest]), do: run(rest)
   def run([]), do: nil
 end
