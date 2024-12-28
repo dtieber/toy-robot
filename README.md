@@ -16,3 +16,10 @@ Here are the rules for these commands:
 * MOVE advances the robot one unit in the direction it is currently facing.
 * LEFT and RIGHT rotate the robot 90 degrees in the respective direction without changing its position.
 * REPORT outputs the current position and orientation of the robot (X,Y,F).
+
+##### Commands
+* Install deps: `$ mix deps.get`
+* Run tests: `$ mix tests`
+* Create docs: `$ mix docs`
+* Run static code analysis: `$ mix credo`
+* Start toy robot: `$ mix run robot.exs`
