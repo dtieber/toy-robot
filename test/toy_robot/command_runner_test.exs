@@ -10,4 +10,9 @@ defmodule ToyRobot.CommandRunnerTest do
     assert robot.north == 2
     assert robot.facing == :north
   end
+
+  test "handles an invalid place command" do
+    simulation = CommandRunner.run([{:place, %{east: 10, north: 10, facing: :north}}])
+    assert simulation == nil
+  end
 end
