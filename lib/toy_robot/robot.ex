@@ -1,4 +1,8 @@
 defmodule ToyRobot.Robot do
+  @moduledoc """
+  OK Computer. Simple Toy Robot.
+  """
+
   alias ToyRobot.Robot
   defstruct [north: 0, east: 0, facing: :north]
 
