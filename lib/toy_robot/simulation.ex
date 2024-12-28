@@ -74,8 +74,53 @@ defmodule ToyRobot.Simulation do
           robot: %Robot{north: 1, east: 0, facing: :north}
         }
       }
+
+  ### An invalid movement
+      iex> alias ToyRobot.{Robot, Table, Simulation}
+      [ToyRobot.Robot, ToyRobot.Table, ToyRobot.Simulation]
+      iex> table = %Table{north_boundary: 4, east_boundary: 4}
+      %Table{north_boundary: 4, east_boundary: 4}
+      iex> simulation = %Simulation{
+      ...>  table: table,
+      ...>  robot: %Robot{north: 4, east: 0, facing: :north}
+      ...> }
+      iex> simulation |> Simulation.move
+      {
+        :error, :at_table_boundary
+      }
   """
-  def move(%{robot: robot} = simulation) do
-    {:ok, %{simulation | robot: robot |> Robot.move}}
+  def move(%Simulation{robot: robot, table: table} = simulation) do
+    with moved_robot <- robot |> Robot.move,
+      true           <- table |> Table.valid_position?(moved_robot)
+    do
+      {:ok, %{simulation | robot: robot |> Robot.move}}
+    else
+      _ -> {:error, :at_table_boundary}
+    end
+  end
+
+  @doc """
+  Turns the robot left.
+
+  ## Examples
+      iex> alias ToyRobot.{Robot, Table, Simulation}
+      [ToyRobot.Robot, ToyRobot.Table, ToyRobot.Simulation]
+      iex> table = %Table{north_boundary: 4, east_boundary: 4}
+      %Table{north_boundary: 4, east_boundary: 4}
+      iex> simulation = %Simulation{
+      ...>  table: table,
+      ...>  robot: %Robot{north: 0, east: 0, facing: :north}
+      ...> }
+      iex> simulation |> Simulation.turn_left
+      {
+        :ok,
+        %Simulation{
+          table: table,
+          robot: %Robot{north: 0, east: 0, facing: :west}
+        }
+      }
+  """
+  def turn_left(%Simulation{robot: robot} = simulation) do
+    {:ok, %{simulation | robot: robot |> Robot.turn_left}}
   end
 end
