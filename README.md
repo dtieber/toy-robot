@@ -22,4 +22,5 @@ Here are the rules for these commands:
 * Run tests: `$ mix tests`
 * Create docs: `$ mix docs`
 * Run static code analysis: `$ mix credo`
-* Start toy robot: `$ mix run robot.exs`
+* Build CLI: `$ mix escript.build`
+* Start toy robot: `$ ./toy_robot commands.txt`
